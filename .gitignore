@@ -1,11 +1,9 @@
-# History files
+# R and RStudio files.
 .Rhistory
-
-# Example code in package build process
-*-Ex.R
-
-# R data files from past sessions
-.Rdata
-
-# RStudio files
+.RData
+.Rproj.user
 .Rproj.user/
+
+# The devtools zip is downloaded when the package is updating itself.  If it's not deleted, there's no reason to commit it to the repository.
+devtools.zip
+

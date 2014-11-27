@@ -1,0 +1,12 @@
+PackageName,OnCran,Install,GitHubUsername,Description
+devtools,TRUE,TRUE,,Used in the C1 survival for sourcing gists
+ggplot2,TRUE,FALSE,,Graphing
+knitr,TRUE,FALSE,,For reporting
+dplyr,TRUE,TRUE,,Important for data manipulation
+roxygen,TRUE,TRUE,klutometis,Creates documentation Rd file from (well-formed) comments
+rmarkdown,TRUE,TRUE,rstudio,"Needed for knitr and reports."
+stringr,TRUE,TRUE,,Consistent/convenient function signatures for manipulating text
+testit,TRUE,TRUE,,has the useful `assert()` function
+testthat,TRUE,TRUE,hadley,Heavier testing framework that's good for package development
+yaml,TRUE,TRUE,,"Needed for knitr and reports."
+
