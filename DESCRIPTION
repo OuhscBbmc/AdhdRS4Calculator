@@ -1,13 +1,20 @@
 Package: AdhdRS4Calculator
 Title: Calculator for ADHD Rating Scale IV
 Version: 0.1-1
-Authors@R: "Will Beasley <wibeasley@hotmail.com> [aut, cre]"
-Description: Calculates the subscales of the ADHD Rating Scale IV
-Depends: 
-    R (>= 3.0.0)
-License: MIT + file LICENSE
-LazyData: true
 Date: 2014-11-27
+License: MIT + file LICENSE
 Author: Will Beasley
 Maintainer: 'Will Beasley' <wibeasley@hotmail.com>
-Suggests: testthat
+URL: https://github.com/OuhscBbmc/AdhdRS4Calculator
+Authors@R: "Will Beasley <wibeasley@hotmail.com> [aut, cre]"
+Description: Calculates the subscales of the ADHD Rating Scale IV
+Depends:
+    R (>= 3.0.0)
+Imports:
+    testit
+Suggests:
+    knitr,
+    testthat (>= 0.9)
+LazyData: true
+VignetteBuilder: knitr
+Roxygen: list(wrap = TRUE)
