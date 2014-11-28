@@ -18,8 +18,6 @@
 #' @param item_16 Item #16 value.  
 #' @param item_17 Item #17 value.  
 #' @param item_18 Item #18 value.  
-#' @param item_19 Item #19 value.  
-#' @param item_20 Item #20 value.  
 #' 
 #' @details The twenty items can be of class \code{numeric} or \code{integer}.  Currently any missing item value 
 #' will make the subscale and the total score missing as well.

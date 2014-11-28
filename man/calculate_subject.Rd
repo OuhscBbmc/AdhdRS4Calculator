@@ -5,7 +5,7 @@
 \usage{
 calculate_subject(item_01, item_02, item_03, item_04, item_05, item_06, item_07,
   item_08, item_09, item_10, item_11, item_12, item_13, item_14, item_15,
-  item_16, item_17, item_18, item_19 = 0, item_20 = 0)
+  item_16, item_17, item_18)
 }
 \arguments{
   \item{item_01}{Item #1 value.}
@@ -43,10 +43,6 @@ calculate_subject(item_01, item_02, item_03, item_04, item_05, item_06, item_07,
   \item{item_17}{Item #17 value.}
 
   \item{item_18}{Item #18 value.}
-
-  \item{item_19}{Item #19 value.}
-
-  \item{item_20}{Item #20 value.}
 }
 \description{
 Calculate the the two ADHD RS-IV subscales for a single
@@ -54,6 +50,7 @@ subject.
 }
 \details{
 The twenty items can be of class \code{numeric} or
-\code{integer}.
+\code{integer}.  Currently any missing item value will make
+the subscale and the total score missing as well.
 }
 
