@@ -3,10 +3,11 @@ Title: Calculator for ADHD Rating Scale IV
 Version: 0.1-1
 Authors@R: "Will Beasley <wibeasley@hotmail.com> [aut, cre]"
 Description: Calculates the subscales of the ADHD Rating Scale IV
-Depends:
+Depends: 
     R (>= 3.0.0)
 License: MIT + file LICENSE
 LazyData: true
 Date: 2014-11-27
 Author: Will Beasley
 Maintainer: 'Will Beasley' <wibeasley@hotmail.com>
+Suggests: testthat
