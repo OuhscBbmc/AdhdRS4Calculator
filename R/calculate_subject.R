@@ -52,7 +52,6 @@ calculate_subject <- function(
   if( !(class(item_18) %in% c("numeric", "integer")) ) stop("The 'item_18' variable must be of class 'numeric' or 'integer'.")
   # if( !(class(item_19) %in% c("numeric", "integer")) ) stop("The 'item_19' variable must be of class 'numeric' or 'integer'.")
   # if( !(class(item_20) %in% c("numeric", "integer")) ) stop("The 'item_20' variable must be of class 'numeric' or 'integer'.")
-
   
   inattention <- sum(c(item_01, item_03, item_05, item_07, item_09, item_11, item_13, item_15, item_17)) #item_19
   hyperactivity <- sum(c(item_02, item_04, item_06, item_08, item_10, item_12, item_14, item_16, item_18)) #item_20
