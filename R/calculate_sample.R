@@ -1,22 +1,47 @@
 #' @title Calculate the the two ADHD RS-IV subscales for a single subject.
 #' 
 #' @param ds_sample A \code{data.frame} containing items 1 through 18.
-#' @param map A 'named' \code{character} \code{vector} that maps the variable
-#' names in the observed dataset to the expected variable names 
-#' (ie, \code{item_01} through \code{item_18}.)
+#' @param item_names_in_sample A \code{character} \code{vector} that specifies the 18 ADHD RS-IV items in the
+#' sample.  The \emph{order must correspond} to the 18 items of the scale.
 #' 
 #' @details The eighteen items can be of class \code{numeric} or \code{integer}.  Currently any missing item value 
 #' will make the subscale and the total score missing as well.
 
-calculate_sample <- function( ds_sample, map=NULL ) {
-  if( !is.null(map) ) {
-    ds_sample <- plyr::rename(x=ds_sample, replace=map, warn_missing=TRUE)
+calculate_sample <- function( ds_sample, item_names_in_sample=NULL ) {
+  if( is.null(item_names_in_sample) ) {
+    item_names_in_sample <- sprintf("item_%02d", 1:18)
+  }
+  
+  if( length(item_names_in_sample) != 18 ) stop("There must be 18 item names passed; each corresponds to an ADHD RS-IV item in the sample.")
+  
+  for( item_name in item_names_in_sample ) {
+    if( !(item_name %in% colnames(ds_sample)) ) stop(sprintf("The variable name `%s` was not found in the sample.", item_name))
   }
   
   calculate <- function( d ) {
     results <- AdhdRS4Calculator::calculate_subject(
-      d$item_01, d$item_02, d$item_03, d$item_04, d$item_05, d$item_06, d$item_07, d$item_08, d$item_09, d$item_10,
-      d$item_11, d$item_12, d$item_13, d$item_14, d$item_15, d$item_16, d$item_17, d$item_18)
+      item_01 = ds_sample[, item_names_in_sample[01]], 
+      item_02 = ds_sample[, item_names_in_sample[02]], 
+      item_03 = ds_sample[, item_names_in_sample[03]], 
+      item_04 = ds_sample[, item_names_in_sample[04]],
+      item_05 = ds_sample[, item_names_in_sample[05]],
+      item_06 = ds_sample[, item_names_in_sample[06]], 
+      item_07 = ds_sample[, item_names_in_sample[07]], 
+      item_08 = ds_sample[, item_names_in_sample[08]], 
+      item_09 = ds_sample[, item_names_in_sample[09]], 
+      item_10 = ds_sample[, item_names_in_sample[10]],
+      item_11 = ds_sample[, item_names_in_sample[11]], 
+      item_12 = ds_sample[, item_names_in_sample[12]], 
+      item_13 = ds_sample[, item_names_in_sample[13]], 
+      item_14 = ds_sample[, item_names_in_sample[14]], 
+      item_15 = ds_sample[, item_names_in_sample[15]], 
+      item_16 = ds_sample[, item_names_in_sample[16]], 
+      item_17 = ds_sample[, item_names_in_sample[17]], 
+      item_18 = ds_sample[, item_names_in_sample[18]] 
+      # item_19 = ds_sample[, item_names_in_sample[19]], 
+      # item_20 = ds_sample[, item_names_in_sample[20]]
+    )
+    
     d$total <- results$total
     d$inattention <- results$inattention
     d$hyperactivity <- results$hyperactivity

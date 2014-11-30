@@ -3,16 +3,16 @@
 \alias{calculate_sample}
 \title{Calculate the the two ADHD RS-IV subscales for a single subject.}
 \usage{
-calculate_sample(ds_sample, map = NULL)
+calculate_sample(ds_sample, item_names_in_sample = NULL)
 }
 \arguments{
   \item{ds_sample}{A \code{data.frame} containing items 1
   through 18.}
 
-  \item{map}{A 'named' \code{character} \code{vector} that
-  maps the variable names in the observed dataset to the
-  expected variable names (ie, \code{item_01} through
-  \code{item_18}.)}
+  \item{item_names_in_sample}{A \code{character}
+  \code{vector} that specifies the 18 ADHD RS-IV items in
+  the sample.  The \emph{order must correspond} to the 18
+  items of the scale.}
 }
 \description{
 Calculate the the two ADHD RS-IV subscales for a single

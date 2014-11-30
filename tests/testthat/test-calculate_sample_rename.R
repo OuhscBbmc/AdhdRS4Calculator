@@ -3,11 +3,7 @@ library(testthat)
 ###########
 context("calculate_sample_rename")
 ###########
-map <- c(
-  "i_01"="item_01", "i_02"="item_02", "i_03"="item_03", "i_04"="item_04", "i_05"="item_05", 
-  "i_06"="item_06", "i_07"="item_07", "i_08"="item_08", "i_09"="item_09", "i_10"="item_10",
-  "i_11"="item_11", "i_12"="item_12", "i_13"="item_13", "i_14"="item_14", "i_15"="item_15", 
-  "i_16"="item_16", "i_17"="item_17", "i_18"="item_18")
+sample_item_names <- sprintf("i_%02d", 1:18)
 
 test_that("AllOnes", {
   ds1 <- data.frame(
@@ -17,7 +13,7 @@ test_that("AllOnes", {
   expected_total <- 18
   expected_inattention <- 9
   expected_hyperactivity <- 9
-  ds2 <- calculate_sample(ds1, map=map)
+  ds2 <- calculate_sample(ds1, item_names_in_sample=sample_item_names)
   
   expect_equal(ds2$total, expected=expected_total, label="The total score should be correct.")
   expect_equal(ds2$inattention, expected=expected_inattention, label="The inattention subscale should be correct.")
@@ -33,7 +29,7 @@ test_that("AllThrees", {
   expected_total <- 54
   expected_inattention <- 27
   expected_hyperactivity <- 27
-  ds2 <- calculate_sample(ds1, map=map)
+  ds2 <- calculate_sample(ds1, item_names_in_sample=sample_item_names)
   
   expect_equal(ds2$total, expected=expected_total, label="The total score should be correct.")
   expect_equal(ds2$inattention, expected=expected_inattention, label="The inattention subscale should be correct.")
@@ -49,7 +45,7 @@ test_that("HeavyInattention", {
   expected_total <- 36
   expected_inattention <- 27
   expected_hyperactivity <- 9
-  ds2 <- calculate_sample(ds1, map=map)
+  ds2 <- calculate_sample(ds1, item_names_in_sample=sample_item_names)
   
   expect_equal(ds2$total, expected=expected_total, label="The total score should be correct.")
   expect_equal(ds2$inattention, expected=expected_inattention, label="The inattention subscale should be correct.")
@@ -66,7 +62,7 @@ test_that("HeavyHyperactivity", {
   expected_total <- 36
   expected_inattention <- 9
   expected_hyperactivity <- 27
-  ds2 <- calculate_sample(ds1, map=map)
+  ds2 <- calculate_sample(ds1, item_names_in_sample=sample_item_names)
   
   expect_equal(ds2$total, expected=expected_total, label="The total score should be correct.")
   expect_equal(ds2$inattention, expected=expected_inattention, label="The inattention subscale should be correct.")

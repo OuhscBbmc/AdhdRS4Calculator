@@ -13,8 +13,9 @@ test_that("missing_one_column", {
   for( item_number in item_numbers ) {
     item_name <- sprintf("item_%02d", item_number)
     ds_slim <- ds[, !(colnames(ds) %in% item_name)]
-    expected_error <- sprintf("Error in AdhdRS4Calculator::calculate_subject.+?  : \n  The 'item_%02d' variable must be of class 'numeric' or 'integer'.\n", 
+    expected_error <- sprintf("Error in calculate_sample\\(ds_slim\\) : \n  The variable name `item_%02d` was not found in the sample.\n",  
                               item_number)
+
     testthat::expect_error(
       object = calculate_sample(ds_slim),
       regexp = expected_error
