@@ -4,6 +4,22 @@ library(testthat)
 context("calculate_sample")
 ###########
 
+test_that("AllZeros", {
+  ds1 <- data.frame(
+    item_01=0, item_02=0, item_03=0, item_04=0, item_05=0,
+    item_06=0, item_07=0, item_08=0, item_09=0, item_10=0,
+    item_11=0, item_12=0, item_13=0, item_14=0, item_15=0,
+    item_16=0, item_17=0, item_18=0)
+  
+  expected_total <- 0
+  expected_inattention <- 0
+  expected_hyperactivity <- 0
+  ds2 <- calculate_sample(ds1)
+  
+  expect_equal(ds2$total, expected=expected_total, label="The total score should be correct.")
+  expect_equal(ds2$inattention, expected=expected_inattention, label="The inattention subscale should be correct.")
+  expect_equal(ds2$hyperactivity, expected=expected_hyperactivity, label="The hyperactivity subscale should be correct.")
+})
 test_that("AllOnes", {
   ds1 <- data.frame(
     item_01=1, item_02=1, item_03=1, item_04=1, item_05=1,

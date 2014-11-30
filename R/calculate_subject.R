@@ -53,6 +53,28 @@ calculate_subject <- function(
   # if( !(class(item_19) %in% c("numeric", "integer")) ) stop("The 'item_19' variable must be of class 'numeric' or 'integer'.")
   # if( !(class(item_20) %in% c("numeric", "integer")) ) stop("The 'item_20' variable must be of class 'numeric' or 'integer'.")
   
+  #For the ADHD RS-IV, each item value must be either 0, 1, 2, or 3.  
+  if( !(0L <= item_01 & item_01 <= 3L) ) stop(paste0("The item_01 value must be from 0 to 3.  It was ", item_01, "."))
+  if( !(0L <= item_02 & item_02 <= 3L) ) stop(paste0("The item_02 value must be from 0 to 3.  It was ", item_02, "."))
+  if( !(0L <= item_03 & item_03 <= 3L) ) stop(paste0("The item_03 value must be from 0 to 3.  It was ", item_03, "."))
+  if( !(0L <= item_04 & item_04 <= 3L) ) stop(paste0("The item_04 value must be from 0 to 3.  It was ", item_04, "."))
+  if( !(0L <= item_05 & item_05 <= 3L) ) stop(paste0("The item_05 value must be from 0 to 3.  It was ", item_05, "."))
+  if( !(0L <= item_06 & item_06 <= 3L) ) stop(paste0("The item_06 value must be from 0 to 3.  It was ", item_06, "."))
+  if( !(0L <= item_07 & item_07 <= 3L) ) stop(paste0("The item_07 value must be from 0 to 3.  It was ", item_07, "."))
+  if( !(0L <= item_08 & item_08 <= 3L) ) stop(paste0("The item_08 value must be from 0 to 3.  It was ", item_08, "."))
+  if( !(0L <= item_09 & item_09 <= 3L) ) stop(paste0("The item_09 value must be from 0 to 3.  It was ", item_09, "."))
+  if( !(0L <= item_10 & item_10 <= 3L) ) stop(paste0("The item_10 value must be from 0 to 3.  It was ", item_10, "."))
+  if( !(0L <= item_11 & item_11 <= 3L) ) stop(paste0("The item_11 value must be from 0 to 3.  It was ", item_11, "."))
+  if( !(0L <= item_12 & item_12 <= 3L) ) stop(paste0("The item_12 value must be from 0 to 3.  It was ", item_12, "."))
+  if( !(0L <= item_13 & item_13 <= 3L) ) stop(paste0("The item_13 value must be from 0 to 3.  It was ", item_13, "."))
+  if( !(0L <= item_14 & item_14 <= 3L) ) stop(paste0("The item_14 value must be from 0 to 3.  It was ", item_14, "."))
+  if( !(0L <= item_15 & item_15 <= 3L) ) stop(paste0("The item_15 value must be from 0 to 3.  It was ", item_15, "."))
+  if( !(0L <= item_16 & item_16 <= 3L) ) stop(paste0("The item_16 value must be from 0 to 3.  It was ", item_16, "."))
+  if( !(0L <= item_17 & item_17 <= 3L) ) stop(paste0("The item_17 value must be from 0 to 3.  It was ", item_17, "."))
+  if( !(0L <= item_18 & item_18 <= 3L) ) stop(paste0("The item_18 value must be from 0 to 3.  It was ", item_18, "."))
+  # if( !(0L <= item_19 & item_19 <= 3L) ) stop(paste0("The item_19 value must be from 0 to 3.  It was ", item_19, "."))
+  # if( !(0L <= item_20 & item_20 <= 3L) ) stop(paste0("The item_20 value must be from 0 to 3.  It was ", item_20, "."))
+  
   inattention <- sum(c(item_01, item_03, item_05, item_07, item_09, item_11, item_13, item_15, item_17)) #item_19
   hyperactivity <- sum(c(item_02, item_04, item_06, item_08, item_10, item_12, item_14, item_16, item_18)) #item_20
   total <- inattention + hyperactivity

@@ -1,7 +1,7 @@
 Package: AdhdRS4Calculator
 Title: Calculator for ADHD Rating Scale IV
-Version: 0.1-4
-Date: 2014-11-28
+Version: 0.1-5
+Date: 2014-11-29
 License: MIT + file LICENSE
 Author: Will Beasley [aut, cre]
 Maintainer: Will Beasley <wibeasley@hotmail.com>
