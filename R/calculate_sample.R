@@ -20,35 +20,46 @@ calculate_sample <- function( ds_sample, item_names_in_sample=NULL ) {
   
   calculate <- function( d ) {
     results <- AdhdRS4Calculator::calculate_subject(
-      item_01 = ds_sample[, item_names_in_sample[01]], 
-      item_02 = ds_sample[, item_names_in_sample[02]], 
-      item_03 = ds_sample[, item_names_in_sample[03]], 
-      item_04 = ds_sample[, item_names_in_sample[04]],
-      item_05 = ds_sample[, item_names_in_sample[05]],
-      item_06 = ds_sample[, item_names_in_sample[06]], 
-      item_07 = ds_sample[, item_names_in_sample[07]], 
-      item_08 = ds_sample[, item_names_in_sample[08]], 
-      item_09 = ds_sample[, item_names_in_sample[09]], 
-      item_10 = ds_sample[, item_names_in_sample[10]],
-      item_11 = ds_sample[, item_names_in_sample[11]], 
-      item_12 = ds_sample[, item_names_in_sample[12]], 
-      item_13 = ds_sample[, item_names_in_sample[13]], 
-      item_14 = ds_sample[, item_names_in_sample[14]], 
-      item_15 = ds_sample[, item_names_in_sample[15]], 
-      item_16 = ds_sample[, item_names_in_sample[16]], 
-      item_17 = ds_sample[, item_names_in_sample[17]], 
-      item_18 = ds_sample[, item_names_in_sample[18]] 
-      # item_19 = ds_sample[, item_names_in_sample[19]], 
-      # item_20 = ds_sample[, item_names_in_sample[20]]
+      item_01 = as.integer(ds_sample[1, item_names_in_sample[01]]), 
+      item_02 = as.integer(ds_sample[1, item_names_in_sample[02]]), 
+      item_03 = as.integer(ds_sample[1, item_names_in_sample[03]]), 
+      item_04 = as.integer(ds_sample[1, item_names_in_sample[04]]),
+      item_05 = as.integer(ds_sample[1, item_names_in_sample[05]]),
+      item_06 = as.integer(ds_sample[1, item_names_in_sample[06]]), 
+      item_07 = as.integer(ds_sample[1, item_names_in_sample[07]]), 
+      item_08 = as.integer(ds_sample[1, item_names_in_sample[08]]), 
+      item_09 = as.integer(ds_sample[1, item_names_in_sample[09]]), 
+      item_10 = as.integer(ds_sample[1, item_names_in_sample[10]]),
+      item_11 = as.integer(ds_sample[1, item_names_in_sample[11]]), 
+      item_12 = as.integer(ds_sample[1, item_names_in_sample[12]]), 
+      item_13 = as.integer(ds_sample[1, item_names_in_sample[13]]), 
+      item_14 = as.integer(ds_sample[1, item_names_in_sample[14]]), 
+      item_15 = as.integer(ds_sample[1, item_names_in_sample[15]]), 
+      item_16 = as.integer(ds_sample[1, item_names_in_sample[16]]), 
+      item_17 = as.integer(ds_sample[1, item_names_in_sample[17]]), 
+      item_18 = as.integer(ds_sample[1, item_names_in_sample[18]]) 
+      # item_19 = as.integer(ds_sample[1, item_names_in_sample[19]]), 
+      # item_20 = as.integer(ds_sample[1, item_names_in_sample[20]])
     )
-    
+        
     d$total <- results$total
     d$inattention <- results$inattention
     d$hyperactivity <- results$hyperactivity
     return( d )
   }
   
-  ds_sample <- dplyr::do(ds_sample, calculate(.))
+  ds_sample <- dplyr::do(
+    dplyr::group_by(
+      ds_sample,
+      row_number()
+    ),
+    calculate(.)
+  )
+  #   ds_sample <- ds_sample %>%
+  #     dplyr::group_by(1:dplyr::n()) %>%
+  #     dplyr::do(calculate(.))
+  
+  #ds_sample <- dplyr::do(ds_sample, calculate(.))
   # ds %>%
   #   dplyr::do(calculate(.))
   return( ds_sample )
